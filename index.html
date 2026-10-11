@@ -83,6 +83,21 @@ details.resvbox > summary::-webkit-details-marker{ display:none; }
 .shotd summary{ font-size:13px; color:var(--accent); font-weight:600; cursor:pointer; }
 .shotd img{ margin-top:8px; width:100%; height:auto; border:1px solid var(--line); border-radius:10px; display:block; }
 .hint{ margin-top:10px; font-size:12px; color:var(--soft); }
+
+.memo-card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:10px; }
+.memo-card h3{ margin:0 0 6px; font-size:15.5px; }
+.addrow{ display:flex; gap:8px; margin:8px 0; }
+.addrow input{ flex:1; min-width:0; font:inherit; font-size:16px; padding:9px 11px; border:1px solid var(--line); border-radius:10px; background:var(--bg); color:var(--ink); }
+.addrow button{ flex:0 0 auto; }
+#place-list{ list-style:none; margin:0; padding:0; }
+#place-list li{ display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--line); }
+#place-list li:last-child{ border-bottom:none; }
+#place-list input[type=checkbox]{ width:20px; height:20px; flex:0 0 auto; accent-color:var(--accent); }
+#place-list a{ flex:1; min-width:0; color:var(--ink); text-decoration:none; font-weight:600; word-break:break-word; }
+#place-list li.done a{ text-decoration:line-through; color:var(--soft); font-weight:400; }
+#place-list .del{ flex:0 0 auto; border:none; background:transparent; color:var(--soft); font:inherit; font-size:13px; padding:6px 8px; cursor:pointer; }
+#free-memo{ width:100%; font:inherit; font-size:16px; line-height:1.5; padding:10px 11px; border:1px solid var(--line); border-radius:10px; background:var(--bg); color:var(--ink); resize:vertical; min-height:150px; }
+.memo-empty{ font-size:13px; color:var(--soft); padding:6px 0; }
 </style>
 </head>
 <body>
@@ -94,7 +109,7 @@ details.resvbox > summary::-webkit-details-marker{ display:none; }
     </div>
     <a class="resv-top" id="resv-top" href="#ito">📋 이토 오카시 예약</a>
   </header>
-  <nav class="tabs" aria-label="일자"><a class="tab" href="#day0" aria-selected="true"><span class="tl">DAY 1</span><span class="td">10/17 (토)</span></a><a class="tab" href="#day1" aria-selected="false"><span class="tl">DAY 2</span><span class="td">10/18 (일)</span></a><a class="tab" href="#day2" aria-selected="false"><span class="tl">DAY 3</span><span class="td">10/19 (월)</span></a><a class="tab" href="#day3" aria-selected="false"><span class="tl">DAY 4</span><span class="td">10/20 (화)</span></a></nav>
+  <nav class="tabs" aria-label="일자"><a class="tab" href="#day0" aria-selected="true"><span class="tl">DAY 1</span><span class="td">10/17 (토)</span></a><a class="tab" href="#day1" aria-selected="false"><span class="tl">DAY 2</span><span class="td">10/18 (일)</span></a><a class="tab" href="#day2" aria-selected="false"><span class="tl">DAY 3</span><span class="td">10/19 (월)</span></a><a class="tab" href="#day3" aria-selected="false"><span class="tl">DAY 4</span><span class="td">10/20 (화)</span></a><a class="tab" href="#memo" aria-selected="false"><span class="tl">MEMO</span><span class="td">내 메모</span></a></nav>
   <main><section class="day" id="day0"><div class="dayhead"><b>DAY 1 · 10/17 (토)</b><span>도착 · 시내 쇼핑</span></div><div class="timeline"><article class="item"><div class="time">05:30</div><div class="body"><h3>집 → 인천공항</h3><div class="note">자차이동 (터미널2 예약 주차장)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Incheon%20International%20Airport%20Terminal%202" target="_blank" rel="noopener">📍 인천공항 제2터미널</a></div></div></article><article class="item"><div class="time">06:20</div><div class="body"><h3>인천공항 도착</h3><div class="note">LJ241 / 토 / 08:10 출발</div></div></article><article class="item move"><div class="time">08:10</div><div class="body"><h3>인천공항 → 간사이공항</h3></div></article><article class="item"><div class="time">10:00</div><div class="body"><h3>간사이공항 도착</h3><div class="note">① 현금인출
 ①-① 트래블월렛 (공용 / 이온 ATM / 3만 엔 인출) - 교토에는 1개임
 - 제1터미널: 짐 찾는 곳 4번 / 6~7번 벨트 근처 / 2층 스벅 / 551호라이 인근</div><details class="more"><summary>더보기 (9줄)</summary><div class="note">- 제2터미널: 짐 찾는 곳 C카운터 뒷편
@@ -158,7 +173,7 @@ JR 사가노선 → 교토역 약 15~20분 (추정)</div><div class="chips"><a c
 후보(쇼핑, 교토역 근처): 이온몰 교토 10:00 오픈(하치조 출구 도보 5분, 호텔에서 직선 약 1.45km)
 교토 아반티 10:00 오픈 / 요도바시 09:30 오픈 → 12:30 하루카 전 10:00~11:30에 이용 가능</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=AEON%20MALL%20KYOTO&amp;query_place_id=ChIJ8Uuuf6kIAWARFFrpsu-HJHQ" target="_blank" rel="noopener">📍 이온몰 교토</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Avanti&amp;query_place_id=ChIJS-XpmK0IAWARLYU5TZxCD3M" target="_blank" rel="noopener">📍 교토 아반티</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Yodobashi%20Camera%20Multimedia%20Kyoto&amp;query_place_id=ChIJNfpddK8IAWAR21KSO4M57nY" target="_blank" rel="noopener">📍 요도바시카메라</a></div></div></article><article class="item"><div class="time">12:00</div><div class="body"><h3>교토역 도착</h3><div class="note">하루카 12:30 전에 30분 여유 / 승강장과 9호차 위치 확인
 &#x27;사용개시&#x27;는 타기 직전에 누르기</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Station" target="_blank" rel="noopener">📍 교토역</a></div></div></article><article class="item"><div class="time">12:30</div><div class="body"><h3>교토역 → 간사이공항<br>(하루카 27호)</h3><div class="note">WEST QR 하루카 편도 / 12:30 → 13:50 (약 80분) / 9호차 1A·1B
-개찰구에서 QR 스캔</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Station" target="_blank" rel="noopener">📍 교토역</a></div></div></article><article class="item"><div class="time">13:50</div><div class="body"><h3>간사이공항 도착</h3><div class="note">출발(16:05)까지 2시간 15분 / 체크인 → 출국심사 → 면세점</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kansai%20International%20Airport" target="_blank" rel="noopener">📍 간사이공항</a></div></div></article><article class="item"><div class="time">16:05</div><div class="body"><h3>간사이공항 → 인천공항</h3><div class="note">16:05 출발 / 18:10 인천 도착</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kansai%20International%20Airport" target="_blank" rel="noopener">📍 간사이공항</a></div></div></article><article class="item"><div class="time">18:10</div><div class="body"><h3>인천공항 도착</h3><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Incheon%20International%20Airport" target="_blank" rel="noopener">📍 인천공항</a></div></div></article></div></section></main>
+개찰구에서 QR 스캔</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Station" target="_blank" rel="noopener">📍 교토역</a></div></div></article><article class="item"><div class="time">13:50</div><div class="body"><h3>간사이공항 도착</h3><div class="note">출발(16:05)까지 2시간 15분 / 체크인 → 출국심사 → 면세점</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kansai%20International%20Airport" target="_blank" rel="noopener">📍 간사이공항</a></div></div></article><article class="item"><div class="time">16:05</div><div class="body"><h3>간사이공항 → 인천공항</h3><div class="note">16:05 출발 / 18:10 인천 도착</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kansai%20International%20Airport" target="_blank" rel="noopener">📍 간사이공항</a></div></div></article><article class="item"><div class="time">18:10</div><div class="body"><h3>인천공항 도착</h3><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Incheon%20International%20Airport" target="_blank" rel="noopener">📍 인천공항</a></div></div></article></div></section><section class="day" id="memo"><div class="dayhead"><b>내 메모</b><span>이 폰(브라우저)에만 저장돼요 · 다른 사람과 공유되지 않아요</span></div><div class="memo-card"><h3>가고 싶은 곳</h3><div class="addrow"><input id="place-in" type="text" maxlength="80" placeholder="가고 싶은 곳 이름" enterkeyhint="done"><button type="button" class="btn primary" id="place-add">추가</button></div><ul id="place-list"></ul><div class="memo-empty" id="place-empty">아직 없어요. 이름을 적고 추가를 눌러요.</div><div class="hint">항목을 누르면 구글 지도에서 검색돼요. 체크하면 다녀온 곳으로 표시돼요.</div></div><div class="memo-card"><h3>자유 메모</h3><textarea id="free-memo" placeholder="자유롭게 적어요"></textarea><div class="hint" id="memo-status">자동으로 저장돼요</div></div><noscript><div class="memo-card">이 화면에서는 메모를 쓸 수 없어요. 사파리나 크롬으로 열어 주세요.</div></noscript></section></main>
   <footer>시간·거리는 추정이 섞여 있어요. 영업시간은 가기 전에 지도에서 한 번 더 확인해 주세요.</footer>
 </div>
 <script>
@@ -176,7 +191,7 @@ JR 사가노선 → 교토역 약 15~20분 (추정)</div><div class="chips"><a c
   });
   var start=0, now=new Date();
   if(now.getFullYear()===2026 && now.getMonth()===9 && now.getDate()>=17 && now.getDate()<=20){ start=now.getDate()-17; }
-  else{ try{ var s=parseInt(localStorage.getItem(KEY),10); if(s>=0 && s<4) start=s; }catch(e){} }
+  else{ try{ var s=parseInt(localStorage.getItem(KEY),10); if(s>=0 && s<tabs.length) start=s; }catch(e){} }
   show(start);
   var top=document.getElementById('resv-top'), box=document.getElementById('ito');
   if(top && box){
@@ -200,6 +215,52 @@ JR 사가노선 → 교토역 약 15~20분 (추정)</div><div class="chips"><a c
       else{ fallback(); }
     });
   }
+
+  /* ---- 내 메모 (이 기기에만 저장) ---- */
+  var MK='kyoto-trip-memo-v1', state={places:[], note:''}, canSave=true;
+  try{ var raw=localStorage.getItem(MK); if(raw){ var o=JSON.parse(raw); if(o && o.places) state.places=o.places; if(o && typeof o.note==='string') state.note=o.note; } }catch(e){ canSave=false; }
+  function persist(){ try{ localStorage.setItem(MK, JSON.stringify(state)); canSave=true; }catch(e){ canSave=false; } }
+  var listEl=document.getElementById('place-list'), emptyEl=document.getElementById('place-empty');
+  var inEl=document.getElementById('place-in'), addBtn=document.getElementById('place-add');
+  var noteEl=document.getElementById('free-memo'), statEl=document.getElementById('memo-status');
+  function renderPlaces(){
+    if(!listEl) return;
+    listEl.innerHTML='';
+    state.places.forEach(function(p,i){
+      var li=document.createElement('li'); if(p.d) li.className='done';
+      var cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!p.d;
+      cb.addEventListener('change', function(){ p.d=cb.checked; persist(); renderPlaces(); });
+      var a=document.createElement('a'); a.target='_blank'; a.rel='noopener'; a.textContent=p.t;
+      a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.t+' Kyoto');
+      var del=document.createElement('button'); del.type='button'; del.className='del'; del.textContent='삭제';
+      del.addEventListener('click', function(){ state.places.splice(i,1); persist(); renderPlaces(); });
+      li.appendChild(cb); li.appendChild(a); li.appendChild(del); listEl.appendChild(li);
+    });
+    if(emptyEl) emptyEl.style.display = state.places.length ? 'none' : '';
+  }
+  function addPlace(){
+    var t=(inEl.value||'').replace(/^\s+|\s+$/g,'');
+    if(!t) return;
+    state.places.push({t:t, d:false}); inEl.value=''; persist(); renderPlaces();
+    if(!canSave && statEl) statEl.textContent='이 브라우저에서는 저장이 안 될 수 있어요 (화면을 닫으면 사라져요)';
+  }
+  if(addBtn && inEl){
+    addBtn.addEventListener('click', addPlace);
+    inEl.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); addPlace(); } });
+  }
+  if(noteEl){
+    noteEl.value=state.note;
+    var tm=null;
+    noteEl.addEventListener('input', function(){
+      state.note=noteEl.value;
+      if(statEl) statEl.textContent='저장 중…';
+      clearTimeout(tm);
+      tm=setTimeout(function(){ persist(); if(statEl) statEl.textContent = canSave ? '저장됨' : '이 브라우저에서는 저장이 안 될 수 있어요'; }, 400);
+    });
+  }
+  renderPlaces();
+  if(!canSave && statEl) statEl.textContent='이 브라우저에서는 저장이 안 될 수 있어요';
+
   /* 모든 준비가 끝난 뒤에만 '한 날짜만 보기'를 켠다. 스크립트가 막힌 환경에서는 모든 날짜가 그대로 보인다. */
   document.documentElement.className += ' js';
 })();
