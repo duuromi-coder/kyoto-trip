@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>교토 3박4일 일정</title>
+<style>
+:root{
+  --bg:#EDE6D6; --card:#F7F2E7; --ink:#2B2620; --soft:#5C5548; --line:#C9BEA5;
+  --accent:#9C3D2E; --accent-ink:#FFFFFF; --moss:#4F6040; --chip:#E4DAC4; --alt:#E9E1CF;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1E1A15; --card:#28231D; --ink:#EFE8D8; --soft:#B5AB95; --line:#463F34;
+    --accent:#D9806D; --accent-ink:#1E1A15; --moss:#A5B992; --chip:#352F27; --alt:#2D2720;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1E1A15; --card:#28231D; --ink:#EFE8D8; --soft:#B5AB95; --line:#463F34;
+  --accent:#D9806D; --accent-ink:#1E1A15; --moss:#A5B992; --chip:#352F27; --alt:#2D2720;
+}
+html{ scroll-padding-top:calc(env(safe-area-inset-top,0px) + 74px); scroll-behavior:smooth; }
+*{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  font-size:15px; line-height:1.5; -webkit-text-size-adjust:100%;
+}
+.wrap{ max-width:720px; margin:0 auto; padding:0 14px 48px; }
+header.top{ padding:20px 2px 12px; border-bottom:2px solid var(--ink); display:flex; align-items:flex-end; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+header.top h1{ margin:0; font-size:22px; letter-spacing:-0.01em; }
+header.top .sub{ font-size:12.5px; color:var(--soft); margin-top:2px; }
+.resv-top{ border:1.5px solid var(--accent); color:var(--accent); font-weight:700; font-size:13.5px; padding:8px 12px; border-radius:999px; text-decoration:none; }
+.tabs{ position:sticky; top:env(safe-area-inset-top,0px); z-index:5; display:flex; gap:6px; padding:10px 0; background:var(--bg); overflow-x:auto; }
+.tab{ flex:1 0 auto; min-width:76px; border:1px solid var(--line); background:var(--card); color:var(--soft); border-radius:12px; padding:7px 10px; text-decoration:none; display:flex; flex-direction:column; align-items:center; line-height:1.25; }
+.tab .tl{ font-weight:700; font-size:13px; }
+.tab .td{ font-size:11.5px; }
+.tab[aria-selected="true"]{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+.js .day:not(.on){ display:none; }
+.day{ margin-bottom:26px; }
+.dayhead{ display:flex; flex-direction:column; gap:1px; padding:8px 2px 10px; }
+.dayhead b{ font-size:17px; }
+.dayhead span{ font-size:12.5px; color:var(--soft); }
+.timeline{ display:flex; flex-direction:column; gap:8px; }
+.item{ display:flex; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:11px 12px; }
+.item.move{ background:transparent; border-style:dashed; padding:7px 12px; }
+.item.alt{ background:var(--alt); }
+.time{ flex:0 0 52px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--accent); font-size:14px; padding-top:1px; }
+.body{ flex:1; min-width:0; }
+.body h3{ margin:0; font-size:15.5px; line-height:1.4; }
+.item.move h3{ font-weight:600; font-size:14px; color:var(--soft); }
+.tag{ display:inline-block; margin-left:6px; font-size:11px; font-weight:700; padding:1px 7px; border-radius:999px; background:var(--chip); color:var(--soft); vertical-align:middle; }
+.note{ margin-top:4px; font-size:13.5px; color:var(--soft); white-space:pre-line; word-break:break-word; }
+details.more{ margin-top:4px; }
+details.more summary{ font-size:12.5px; color:var(--accent); cursor:pointer; font-weight:600; }
+.chips{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.chip{ display:inline-flex; align-items:center; gap:4px; min-height:34px; padding:5px 11px; border-radius:999px; background:var(--chip); color:var(--ink); font-size:13px; text-decoration:none; border:1px solid var(--line); }
+.side{ margin-top:6px; font-size:12.5px; color:var(--soft); }
+.shop{ list-style:none; margin:6px 0 0; padding:0; display:grid; grid-template-columns:1fr; gap:4px; }
+.shop li{ font-size:13.5px; }
+.shop a{ color:var(--ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--line); }
+.shop .nolink{ font-weight:600; }
+.shop .memo{ color:var(--soft); font-size:12.5px; }
+.shop-sep{ margin:10px 0 2px; font-size:12px; font-weight:700; color:var(--moss); }
+footer{ margin-top:22px; font-size:12px; color:var(--soft); text-align:center; }
+details.resvbox{ margin-top:10px; }
+details.resvbox > summary{ list-style:none; display:inline-flex; align-items:center; min-height:36px; padding:6px 14px; border-radius:999px; background:var(--accent); color:var(--accent-ink); font-weight:700; font-size:13.5px; cursor:pointer; }
+details.resvbox > summary::-webkit-details-marker{ display:none; }
+.resv-in{ margin-top:10px; padding:12px; border:1px solid var(--line); border-radius:12px; background:var(--bg); }
+.okline{ color:var(--moss); font-weight:700; font-size:13.5px; margin-bottom:10px; }
+.kv{ display:grid; grid-template-columns:70px 1fr; gap:7px 10px; font-size:14.5px; margin:0; }
+.kv dt{ color:var(--soft); }
+.kv dd{ margin:0; font-weight:600; }
+.idrow{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.idcode{ font-size:20px; letter-spacing:.08em; font-weight:800; }
+.btn{ border:1px solid var(--line); background:var(--chip); color:var(--ink); font:inherit; font-size:13px; padding:6px 11px; border-radius:999px; cursor:pointer; text-decoration:none; display:inline-block; }
+.btn.primary{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:700; }
+.resv-in .row{ margin-top:12px; }
+.shotd{ margin-top:12px; }
+.shotd summary{ font-size:13px; color:var(--accent); font-weight:600; cursor:pointer; }
+.shotd img{ margin-top:8px; width:100%; height:auto; border:1px solid var(--line); border-radius:10px; display:block; }
+.hint{ margin-top:10px; font-size:12px; color:var(--soft); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>교토 3박4일</h1>
+      <div class="sub">2026.10.17(토) – 10.20(화)</div>
+    </div>
+    <a class="resv-top" id="resv-top" href="#ito">📋 이토 오카시 예약</a>
+  </header>
+  <nav class="tabs" aria-label="일자"><a class="tab" href="#day0" aria-selected="true"><span class="tl">DAY 1</span><span class="td">10/17 (토)</span></a><a class="tab" href="#day1" aria-selected="false"><span class="tl">DAY 2</span><span class="td">10/18 (일)</span></a><a class="tab" href="#day2" aria-selected="false"><span class="tl">DAY 3</span><span class="td">10/19 (월)</span></a><a class="tab" href="#day3" aria-selected="false"><span class="tl">DAY 4</span><span class="td">10/20 (화)</span></a></nav>
+  <main><section class="day" id="day0"><div class="dayhead"><b>DAY 1 · 10/17 (토)</b><span>도착 · 시내 쇼핑</span></div><div class="timeline"><article class="item"><div class="time">05:30</div><div class="body"><h3>집 → 인천공항</h3><div class="note">자차이동 (터미널2 예약 주차장)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Incheon%20International%20Airport%20Terminal%202" target="_blank" rel="noopener">📍 인천공항 제2터미널</a></div></div></article><article class="item"><div class="time">06:20</div><div class="body"><h3>인천공항 도착</h3><div class="note">LJ241 / 토 / 08:10 출발</div></div></article><article class="item move"><div class="time">08:10</div><div class="body"><h3>인천공항 → 간사이공항</h3></div></article><article class="item"><div class="time">10:00</div><div class="body"><h3>간사이공항 도착</h3><div class="note">① 현금인출
+①-① 트래블월렛 (공용 / 이온 ATM / 3만 엔 인출) - 교토에는 1개임
+- 제1터미널: 짐 찾는 곳 4번 / 6~7번 벨트 근처 / 2층 스벅 / 551호라이 인근</div><details class="more"><summary>더보기 (9줄)</summary><div class="note">- 제2터미널: 짐 찾는 곳 C카운터 뒷편
+- 방법: International Cards 선택 → 한국어 선택 → 카드 삽입 → 비밀번호 입력 → 출금(Withdrawals) → 보통예금(Savings Account) → 금액 입력 순
+- 주의: 비밀번호 4자리 (6자리일 경우 뒤에 00 붙이기)
+①-② 트래블로그 (개인 / 세븐 ATM) - 편의점 가능
+- 제1터미널: 입국장 1층 B 게이트, 551 호라이 만두 맞은편
+- 방법: 카드 넣기 → 한국어 → 출금 → 보통예금
+② 만두 사기
+551 호라이 만두 구매
+③ 하루카 탑승</div></details><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kansai%20International%20Airport%20Terminal%201" target="_blank" rel="noopener">📍 간사이공항 제1터미널</a></div></div></article><article class="item"><div class="time">11:44</div><div class="body"><h3>간사이공항 → 교토역 (하루카 20호)<br>→ 숙소 (짐 맡기기)</h3><div class="note">WEST QR 하루카 편도 / 11:44 → 13:04 / 8호차 6C·6D
+&#x27;사용개시&#x27;는 타기 직전에 누르고 개찰구에서 QR 스캔
+교토역 → 숙소: 택시 타기 (직선 약 1km, 5분 안팎, 추정) / 짐 맡기고 13:30쯤 출발</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Station" target="_blank" rel="noopener">📍 교토역</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Glad%20One%20Kyoto%20Shichijo&amp;query_place_id=ChIJU-9Of2YJAWARdwWMYD2OOfo" target="_blank" rel="noopener">📍 호텔</a></div></div></article><article class="item"><div class="time">13:30</div><div class="body"><h3>숙소 → 카페<br>(Good good not bad Kyoto)</h3><div class="note">20분 도보</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Good%20good%20not%20bad%20Kyoto" target="_blank" rel="noopener">📍 Good good not bad Kyoto</a><a class="chip link" href="https://blog.naver.com/coooodnjs/224417727470" target="_blank" rel="noopener">🔗 블로그 후기</a></div></div></article><article class="item alt"><div class="time">13:30</div><div class="body"><h3>(대안) 밥 먼저 먹고 카페 가기<span class="tag">대안</span></h3><div class="note">아니면 밥 먼저 먹고 weekenders 카페 가기 / 하브스</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Weekenders%20Coffee%20Tominokoji%20Kyoto" target="_blank" rel="noopener">📍 Weekenders Coffee Tominokoji</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Harbs%20Daimaru%20Kyoto&amp;query_place_id=ChIJWdqtd5wIAWARmZqtuyzzY14" target="_blank" rel="noopener">📍 하브스</a></div></div></article><article class="item"><div class="time">14:30</div><div class="body"><h3>카페 → 밥</h3><div class="note">1. 도미회덮밥 (도보 9분) 11:30~16:00 / 17:30~20:00
+   (MAKI Sea Bream Rice Kyoto Teramachi)
+2. 돈가스 (도보 12분) 11:00~20:30
+   (카츠쿠라 산조)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=MAKI%20Sea%20Bream%20Rice%20Kyoto%20Teramachi" target="_blank" rel="noopener">📍 MAKI Sea Bream Rice</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Katsukura%20Sanjo%20Kyoto" target="_blank" rel="noopener">📍 카츠쿠라 산조</a></div></div></article><article class="item"><div class="time">15:30</div><div class="body"><h3>쇼핑</h3><ul class="shop"><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Camera%20no%20Naniwa%20Kyoto%20Store" target="_blank" rel="noopener">📍 Naniwa Camera Kyoto Store</a> <span class="memo">· 카메라</span></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=SOU%20SOU%20tabi%20Kyoto" target="_blank" rel="noopener">📍 SOU·SOU tabi</a> <span class="memo">· 양말</span></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=SOU%20SOU%20hotei%20Kyoto" target="_blank" rel="noopener">📍 SOU·SOU hotei</a> <span class="memo">· 에코백 (물건 제일 많음)</span></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=SOU%20SOU%20Isemonsen%20Kyoto" target="_blank" rel="noopener">📍 SOU·SOU 이세모센</a> <span class="memo">· 지갑 / 천</span></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Kiddy%20Land%20Kyoto" target="_blank" rel="noopener">📍 키디랜드</a> <span class="memo">· 치이카와는 3층</span></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Montbell%20Kyoto%20Shijo" target="_blank" rel="noopener">📍 몽벨</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=KALDI%20Coffee%20Farm%20Kyoto%20Shijo" target="_blank" rel="noopener">📍 칼디</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Hysteric%20Glamour%20Kyoto" target="_blank" rel="noopener">📍 히스테릭 글래머</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Loft%20Kyoto" target="_blank" rel="noopener">📍 Loft</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=A%20Bathing%20Ape%20Kyoto" target="_blank" rel="noopener">📍 Bape</a></li><li><span class="nolink">히츠지 도넛</span> <span class="memo">· 포장해서 릿세이광장에서 먹기</span></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Nintendo%20KYOTO&amp;query_place_id=ChIJ3dxPvegJAWARjuprBYA4hJE" target="_blank" rel="noopener">📍 Nintendo KYOTO</a> <span class="memo">· 교토 다카시마야 7층 · 10:30~20:00</span></li></ul><div class="shop-sep">교토역 근처 (시조·데라마치와 반대쪽 · 월·화로 옮겨도 됨)</div><ul class="shop"><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Yodobashi%20Camera%20Multimedia%20Kyoto&amp;query_place_id=ChIJNfpddK8IAWAR21KSO4M57nY" target="_blank" rel="noopener">📍 요도바시카메라 멀티미디어 교토</a> <span class="memo">· 교토역 북쪽 · 09:30~22:00</span></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Avanti&amp;query_place_id=ChIJS-XpmK0IAWARLYU5TZxCD3M" target="_blank" rel="noopener">📍 교토 아반티</a> <span class="memo">· 교토역 남쪽 · 10:00~21:00</span></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=AEON%20MALL%20KYOTO&amp;query_place_id=ChIJ8Uuuf6kIAWARFFrpsu-HJHQ" target="_blank" rel="noopener">📍 이온몰 교토</a> <span class="memo">· 하치조 출구 도보 5분 · 10:00~21:00</span></li></ul></div></article><article class="item"><div class="time">19:00</div><div class="body"><h3>저녁</h3><div class="note">하브스 가서 쉬기
+또는
+교토 와규 스키야키 샤브샤브 토미노우에 산조 가와라마치점 (당일에 예약해도 될 듯)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Harbs%20Daimaru%20Kyoto&amp;query_place_id=ChIJWdqtd5wIAWARmZqtuyzzY14" target="_blank" rel="noopener">📍 하브스</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Wagyu%20Sukiyaki%20Shabu-shabu%20Tominoue%20Sanjo%20Kawaramachi" target="_blank" rel="noopener">📍 토미노우에 산조 가와라마치점</a></div></div></article><article class="item"><div class="time">20:00</div><div class="body"><h3>저녁 이후</h3><div class="note">편의점 맥주 같은 거 먹거나
+숙소 근처 LP bar: Hachi Record Shop and Bar
+고민가 이자카야 하레바레</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=7-Eleven%20Omiyacho%20Kyoto&amp;query_place_id=ChIJiVvcJZ8JAWAROGXMW65U8-U" target="_blank" rel="noopener">📍 편의점(세븐일레븐)</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hachi%20Record%20Shop%20and%20Bar%20Kyoto&amp;query_place_id=ChIJfdUB1rsIAWARD-lUzccBC7g" target="_blank" rel="noopener">📍 Hachi</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Harebare%20izakaya%20Kyoto" target="_blank" rel="noopener">📍 하레바레</a></div></div></article></div></section><section class="day" id="day1"><div class="dayhead"><b>DAY 2 · 10/18 (일)</b><span>후시미이나리 · 기온 · 오카자키 · 은각사</span></div><div class="timeline"><article class="item move"><div class="time">10:00</div><div class="body"><h3>호텔 출발 → 후시미이나리역</h3><div class="note">호텔 → 케이한 시치조역 도보 7~8분 → 후시미이나리역 약 10분 (추정)
+특급(Limited Express)은 후시미이나리역에 안 서니 준급·보통 열차 타기</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Glad%20One%20Kyoto%20Shichijo&amp;query_place_id=ChIJU-9Of2YJAWARdwWMYD2OOfo" target="_blank" rel="noopener">📍 호텔</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Fushimi-Inari%20Station" target="_blank" rel="noopener">📍 후시미이나리역</a></div></div></article><article class="item"><div class="time">10:25</div><div class="body"><h3>치이카와 모구모구 혼포<br>후시미점</h3><div class="note">09:30~17:30 / 후시미이나리역에서 도보 3분
+2층에 우사기 포토존 / 구경 30~40분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Chiikawa%20Mogumogu%20Honpo%20Fushimi&amp;query_place_id=ChIJD_wFlOkPAWARkSAvKJlcbmU" target="_blank" rel="noopener">📍 치이카와 모구모구 혼포</a><a class="chip link" href="https://www.chiikawamogumogu.jp/" target="_blank" rel="noopener">🔗 링크</a></div></div></article><article class="item"><div class="time">11:10</div><div class="body"><h3>후시미이나리역 → 기온시조역</h3><div class="note">케이한 약 15분 (출처마다 10~22분으로 달라서 15분으로 잡음)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Gion-Shijo%20Station%20Kyoto" target="_blank" rel="noopener">📍 기온시조역</a></div></div></article><article class="item move"><div class="time">11:25</div><div class="body"><h3>기온시조역 → 시라카와 길 따라 걷기</h3><div class="note">기온 시라카와 길을 따라 잇폰바시까지 도보 약 10분 (추정)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Gion%20Shirakawa%20Minami-dori%20Kyoto" target="_blank" rel="noopener">📍 기온 시라카와 길</a></div></div></article><article class="item"><div class="time">11:40</div><div class="body"><h3>잇폰바시(교자바시) +<br>후루카와초 상점가 구경</h3><div class="note">24시간 열려 있는 돌다리 / 버드나무와 마치야 풍경이 사진 명소 / 30분
+후루카와초 상점가에 바스 양과자점(일요일 10:00~19:00, 전화 075-561-0403)이 있어서 빵·케이크 포장은 가능</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Gyoja-bashi%20Bridge%20%28Ippon-bashi%29%20Kyoto&amp;query_place_id=ChIJ4fepgsIIAWARMnVHFNdqGYM" target="_blank" rel="noopener">📍 잇폰바시</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%90%E3%83%B3%E3%82%B9%E6%B4%8B%E8%8F%93%E5%AD%90%E5%BA%97%20%E4%BA%AC%E9%83%BD" target="_blank" rel="noopener">📍 바스 양과자점</a></div></div></article><article class="item move"><div class="time">12:10</div><div class="body"><h3>야마모토 멘조로 이동</h3><div class="note">잇폰바시 → 멘조 약 1km, 도보 15~18분 (추정)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Gyoja-bashi%20Bridge%20%28Ippon-bashi%29%20Kyoto&amp;destination=Yamamoto%20Menzou%20Kyoto&amp;travelmode=walking&amp;origin_place_id=ChIJ4fepgsIIAWARMnVHFNdqGYM&amp;destination_place_id=ChIJAQDFqeYIAWARErPxiBriOF8" target="_blank" rel="noopener">📍 경로 · 잇폰바시 → 멘조</a></div></div></article><article class="item"><div class="time">12:30</div><div class="body"><h3>점심 · 야마모토 멘조 (1순위)</h3><div class="note">Tendon Restaurant Loosen Up!(텐동) 아니면
+juju(돈가스)에서 밥
+(위는 원래 메모. 멘조 예약이 안 되면 대안으로 사용)</div><details class="more"><summary>더보기 (7줄)</summary><div class="note">
+· 멘조: 공식 사이트 예약 필요 (3일 전 예약이라면 10/15 목요일에 열리는지 확인)
+  점심 한정 당일 09:00부터 전화 예약도 가능 / 일요일 영업(주문 마감 17:00), 목요일 휴무
+  카운터 8석 + 4인 테이블 2개라 12:30~13:00 예약 권장 / 예약 시간이 앞뒤로 밀려 줄이 생길 수 있음
+· 대안 1: Loosen Up! 일요일 12:00~15:30 (월 휴무) / 잇폰바시에서 약 150m
+· 대안 2: 주주(돈카츠) 11:30 오픈, 점심은 15:00까지 / 교세라에서 약 430m (instagram.com/tonkatsu_juju)
+· 대안 3: 교돈 키소바 오카키타 (멘조 옆, 예약 불가·줄·현금만)</div></details><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Yamamoto%20Menzou%20Kyoto&amp;query_place_id=ChIJAQDFqeYIAWARErPxiBriOF8" target="_blank" rel="noopener">📍 야마모토 멘조</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Tendon%20Restaurant%20Loosen%20Up%21%20Kyoto" target="_blank" rel="noopener">📍 Loosen Up!</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Tonkatsu%20Juju%20Kyoto&amp;query_place_id=ChIJFT7c25YJAWAR1xVS51AdgLo" target="_blank" rel="noopener">📍 주주</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoudon%20Kisoba%20Okakita%20Kyoto&amp;query_place_id=ChIJbzgGA-QIAWARRhfZihB-bro" target="_blank" rel="noopener">📍 오카키타</a><a class="chip tel" href="tel:+81757510677">📞 075-751-0677</a></div></div></article><article class="item"><div class="time">13:25</div><div class="body"><h3>교세라미술관<br>(전시는 안 보고 구경만) + 카페</h3><div class="note">카페 バンス洋菓子店(프랑스제과) or 교세라안에 카페
+
+일요일 10:00~18:00 (월요일 휴관) / 건물·숍 구경 20~30분 / 숍 ART RECTANGLE KYOTO 10:00~18:30
+· 교세라 안 ENFUSE: 10:30~19:00 (주문 마감 18:00) / 번호표 기계(영어) 있고 붐빔
+· 헤이안진구는 이번엔 제외 (교세라 바로 앞)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20City%20KYOCERA%20Museum%20of%20Art&amp;query_place_id=ChIJU6AVkuYIAWARWKx8NeUp25E" target="_blank" rel="noopener">📍 교세라미술관</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Cafe%20ENFUSE%20Kyoto%20City%20KYOCERA%20Museum%20of%20Art" target="_blank" rel="noopener">📍 ENFUSE 카페</a><a class="chip link" href="http://kyotocity-kyocera.museum/" target="_blank" rel="noopener">🔗 링크</a></div></div></article><article class="item move"><div class="time">14:20</div><div class="body"><h3>은각사로 이동</h3><div class="note">시영버스 5번 → 긴카쿠지미치 정류장 (방향은 정류장에서 확인)
+택시는 10~15분 / 정류장에서 은각사까지 도보 10분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Ginkakuji-michi%20bus%20stop%20Kyoto" target="_blank" rel="noopener">📍 긴카쿠지미치 정류장</a></div></div></article><article class="item"><div class="time">14:55</div><div class="body"><h3>은각사</h3><div class="note">08:30~17:00 (마지막 입장 16:30)
+입장료 500엔 (2026년 4월부터 1,000엔이라는 글도 있어서 공식 확인 필요)
+소요 1시간~1시간 10분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Ginkaku-ji%20Silver%20Pavilion%20Kyoto" target="_blank" rel="noopener">📍 은각사</a></div></div></article><article class="item move"><div class="time">16:10</div><div class="body"><h3>철학의 길<br>(남쪽으로 걷기)</h3><div class="note">은각사 → 난젠지 방향 약 2km, 30~45분
+24시간 열려 있지만 어두워지기 전(5시 반 전)에 끝내기
+일몰은 5시 20분쯤 (추정)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Philosopher%27s%20Path%20Kyoto" target="_blank" rel="noopener">📍 철학의 길</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Nanzen-ji%20Kyoto" target="_blank" rel="noopener">📍 난젠지</a></div></div></article><article class="item move"><div class="time">17:05</div><div class="body"><h3>난젠지·에이칸도 근처 → 산조로 이동</h3><div class="note">케아게역(도자이선) → 산조케이한역, 약 2정거장 (추정)
+하나타누키까지 도보 6분쯤 (추정)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Keage%20Station%20Kyoto" target="_blank" rel="noopener">📍 케아게역</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Sanjo%20Station%20Keihan%20Kyoto" target="_blank" rel="noopener">📍 산조케이한역</a></div></div></article><article class="item"><div class="time">17:45</div><div class="body"><h3>저녁(몬자야끼)<br>하나타누키 가와라마치점</h3><div class="note">12:00~23:00 / 오코노미야키·몬자야끼 / 영어 메뉴 있음
+후기상 1인 2,000엔대</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hanatanuki%20Kawaramachi%20Okonomiyaki%20Monjayaki&amp;query_place_id=ChIJ48jdmZMIAWARMZXiUqbCvmY" target="_blank" rel="noopener">📍 하나타누키 가와라마치점</a><a class="chip tel" href="tel:+81752411088">📞 075-241-1088</a></div></div></article><article class="item move"><div class="time">19:30</div><div class="body"><h3>저녁 마무리 → 레코드바 → 호텔</h3><div class="note">· Hachi Record Shop and Bar: 일요일 18:00~24:00 / 자릿세 500엔 / 호텔에서 약 360m
+· Record Bar Yamada: 18:00~02:00 / 호텔에서 약 560m</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hachi%20Record%20Shop%20and%20Bar%20Kyoto&amp;query_place_id=ChIJfdUB1rsIAWARD-lUzccBC7g" target="_blank" rel="noopener">📍 Hachi</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Record%20Bar%20Yamada%20Kyoto&amp;query_place_id=ChIJW5XXegAJAWARZAloNeQSSak" target="_blank" rel="noopener">📍 Record Bar Yamada</a><a class="chip link" href="https://music.sakahachi.jp/" target="_blank" rel="noopener">🔗 링크</a></div></div></article></div></section><section class="day" id="day2"><div class="dayhead"><b>DAY 3 · 10/19 (월)</b><span>아라시야마</span></div><div class="timeline"><article class="item move"><div class="time">10:00</div><div class="body"><h3>호텔 출발 → 다카시마야</h3><div class="note">호텔 → 케이한 시치조역 → 기온시조역 → 도보 약 7분 (25분 안팎, 추정)
+다카시마야(시조가와라마치)는 첫날 쇼핑 구역과 같은 곳</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Glad%20One%20Kyoto%20Shichijo&amp;query_place_id=ChIJU-9Of2YJAWARdwWMYD2OOfo" target="_blank" rel="noopener">📍 호텔</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Takashimaya%20S.C." target="_blank" rel="noopener">📍 다카시마야</a></div></div></article><article class="item"><div class="time">10:30</div><div class="body"><h3>Nintendo KYOTO</h3><div class="note">교토 다카시마야 S.C. T8 7층 / 10:30~20:00
+1층 마리오 머리 포토존, 옥상 포토존, 스위치 체험, 굿즈가 많다는 후기
+덜 붐비는 편이라는 후기 / 약 40분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Nintendo%20KYOTO&amp;query_place_id=ChIJ3dxPvegJAWARjuprBYA4hJE" target="_blank" rel="noopener">📍 Nintendo KYOTO</a></div></div></article><article class="item move"><div class="time">11:15</div><div class="body"><h3>다이마루(하브스)로 이동</h3><div class="note">다카시마야 → 다이마루 직선 약 570m, 도보 8~9분 (추정)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Kyoto%20Takashimaya%20S.C.&amp;destination=Daimaru%20Kyoto&amp;travelmode=walking&amp;destination_place_id=ChIJISb-rpAIAWARX9Z2o_x8G8c" target="_blank" rel="noopener">📍 경로 · 다카시마야 → 다이마루</a></div></div></article><article class="item"><div class="time">11:25</div><div class="body"><h3>하브스 + 가챠 구경</h3><div class="note">다이마루 교토 3층 / 10:00~19:00
+오후엔 케이크가 품절된다는 후기가 있어서 오픈 직후 쪽이 안전
+매장에서 먹으면 대기 포함 1시간쯤, 포장이면 20분쯤 (추정)
+포장하면 아라시야마까지 들고 다니니 보냉제 받을 수 있는지 물어보기 (크림이 상할 수 있음)
+구경은 12:40까지</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Harbs%20Daimaru%20Kyoto&amp;query_place_id=ChIJWdqtd5wIAWARmZqtuyzzY14" target="_blank" rel="noopener">📍 하브스 (다이마루 3층)</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Daimaru%20Kyoto&amp;query_place_id=ChIJISb-rpAIAWARX9Z2o_x8G8c" target="_blank" rel="noopener">📍 다이마루 교토</a></div></div></article><article class="item move"><div class="time">12:40</div><div class="body"><h3>이토 오카시로 이동</h3><div class="note">다이마루 → 이토 오카시 직선 약 850m, 도보 12~15분 (추정)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Daimaru%20Kyoto&amp;destination=35.00003%2C135.7539&amp;travelmode=walking&amp;origin_place_id=ChIJISb-rpAIAWARX9Z2o_x8G8c" target="_blank" rel="noopener">📍 경로 · 다이마루 → 이토 오카시</a></div></div></article><article class="item"><div class="time">13:00</div><div class="body"><h3>점심 · 이토 오카시 (예약 완료)</h3><div class="note">월~토 07:00~14:30 (일요일 휴무) / 예약제
+숯불 은연어 정식, 1인 3천엔 안팎 / 약 1시간</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=35.00003%2C135.7539" target="_blank" rel="noopener">📍 이토 오카시</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Itookashi" target="_blank" rel="noopener">📍 이토 오카시 (이름 검색)</a></div><details id="ito" class="resvbox"><summary>📋 예약 확인</summary><div class="resv-in"><div class="okline">✔ 예약 완료 (수락됨)</div><dl class="kv"><dt>가게</dt><dd>Kyoto Itookashi (이토 오카시)</dd><dt>날짜</dt><dd>2026년 10월 19일 (월)</dd><dt>시간</dt><dd>13:00</dd><dt>인원</dt><dd>2명</dd></dl><div class="row"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=35.00003%2C135.7539" target="_blank" rel="noopener">📍 지도에서 보기</a></div><div class="hint">월~토 07:00~14:30 영업 (일요일 휴무) · 예약 시간 5~10분 전 도착 권장 · 예약 ID는 예약한 사람의 TableCheck 화면에서 확인</div></div></details></div></article><article class="item move"><div class="time">14:00</div><div class="body"><h3>아라시야마로 이동</h3><div class="note">한큐(오미야·가라스마) → 가쓰라 환승 → 아라시야마, 도보 포함 40~45분 (추정)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hankyu%20Arashiyama%20Station" target="_blank" rel="noopener">📍 한큐 아라시야마역</a></div></div></article><article class="item"><div class="time">14:45</div><div class="body"><h3>코토이모 본점 (Kotoimo Honpo)</h3><div class="note">09:00~17:30 / 테이크아웃 전용 가판
+단고(꼬치 경단), 고구마칩, 소 혀구이 꼬치
+리락쿠마 티하우스에서 북쪽으로 약 160m / 10분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kotoimo%20Honpo%20Arashiyama&amp;query_place_id=ChIJVRURVv-pAWARgdX_NsxaTsY" target="_blank" rel="noopener">📍 코토이모 본점</a><a class="chip tel" href="tel:+81758641212">📞 075-864-1212</a></div></div></article><article class="item"><div class="time">14:55</div><div class="body"><h3>리락쿠마 티하우스<br>(샵 구경 + 사진)</h3><div class="note">10:30~17:30 / 샵은 대기 없이 구경 가능했다는 후기
+카페는 현장 번호표만, 대기 40분~2시간 후기 / 35분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Arashiyama%20Rilakkuma%20Tea%20House&amp;query_place_id=ChIJ3d3Gdv-pAWARqKxDpUyVfKo" target="_blank" rel="noopener">📍 리락쿠마 티하우스</a><a class="chip tel" href="tel:+81758632660">📞 075-863-2660</a></div></div></article><article class="item"><div class="time">15:30</div><div class="body"><h3>치쿠린(대나무숲) + 기찻길</h3><div class="note">24시간 무료 / 도롯코 아라시야마역(사가노 도롯코)에서 약 90m / 리락쿠마에서 도보 8분쯤
+도롯코는 월요일 09:00~17:00 (수요일 휴무), 열차 지나가는 시각은 미확인 → 공식 사이트 시각표 확인 / 40분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Arashiyama%20Bamboo%20Forest&amp;query_place_id=ChIJrYtcv-urAWAR3XzWvXv8n_s" target="_blank" rel="noopener">📍 치쿠린 (대나무숲)</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Torokko%20Arashiyama%20Station&amp;query_place_id=ChIJq7jzXgSqAWARh74xplMebj8" target="_blank" rel="noopener">📍 도롯코 아라시야마역</a></div></div></article><article class="item"><div class="time">16:15</div><div class="body"><h3>미피 사쿠라 키친</h3><div class="note">10:00~18:00 / 베이커리 + 샵, 앉을 자리는 없고 가게 옆에 서서 먹는 공간
+랜덴 아라시야마역 기모노 포레스트가 약 90m / 25분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Arashiyama%20Miffy%20Sakura%20Kitchen&amp;query_place_id=ChIJ8VlzFFwJAWARsKyK5lfQDyM" target="_blank" rel="noopener">📍 미피 사쿠라 키친</a><a class="chip tel" href="tel:+81758632022">📞 075-863-2022</a></div></div></article><article class="item"><div class="time">16:40</div><div class="body"><h3>% 아라비카 아라시야마<br>(테이크아웃)</h3><div class="note">09:00~18:00 / 실내 자리는 1,000엔 유료라 강변에서 마시기
+오전엔 줄이 50분이었다는 후기 / 35분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=%25%20ARABICA%20Kyoto%20Arashiyama&amp;query_place_id=ChIJCWDv__-pAWARwLeeqs_cVew" target="_blank" rel="noopener">📍 % 아라비카</a><a class="chip tel" href="tel:+81757480057">📞 075-748-0057</a></div></div></article><article class="item"><div class="time">17:15</div><div class="body"><h3>도게쓰교</h3><div class="note">% 아라비카 바로 앞 / 일몰은 5시 20분쯤 (추정) / 15분</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Togetsukyo%20Bridge%20Arashiyama" target="_blank" rel="noopener">📍 도게쓰교</a></div></div></article><article class="item move"><div class="time">17:30</div><div class="body"><h3>마무리 → JR로 교토역</h3><div class="note">JR 사가아라시야마역까지 도보 약 10~12분 (추정)
+JR 사가노선 → 교토역 약 15~20분 (추정)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Saga-Arashiyama%20Station" target="_blank" rel="noopener">📍 JR 사가아라시야마역</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Station" target="_blank" rel="noopener">📍 교토역</a></div></div></article><article class="item"><div class="time">18:10</div><div class="body"><h3>돈키호테 (교토역 북쪽 히가시사카이초점)</h3><div class="note">09:00~01:00 / 호텔에서 직선 약 690m / 면세는 여권 필요 / 약 1시간
+· 바로 옆 요도바시카메라 멀티미디어 교토 (돈키에서 약 90m, 09:30~22:00) / 스시 전이나 후에 들를 수 있음</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Don%20Quijote%20Kyoto%20Higashisakaicho&amp;query_place_id=ChIJ5wpGR_YJAWAR67eM7kGop_Q" target="_blank" rel="noopener">📍 돈키호테</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Yodobashi%20Camera%20Multimedia%20Kyoto&amp;query_place_id=ChIJNfpddK8IAWAR21KSO4M57nY" target="_blank" rel="noopener">📍 요도바시카메라</a></div></div></article><article class="item"><div class="time">19:10</div><div class="body"><h3>스시사카바<br>(사시스 또는 스시토후지 에비스스퀘어)</h3><div class="note">· 사시스: 교토역 앞 요도바시카메라 1층 / 11:00~22:00 / 돈키에서 약 90m / 줄이 있고 14분 기다렸다는 후기
+· 스시토후지: 에비스스퀘어 2층 / 월요일 17:00~23:00 / 돈키에서 약 260m / 영어 메뉴 있음 / 오픈 직후엔 예약 없이 앉았다는 후기</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Sushi%20Bar%20Sashisu%20Kyoto%20Yodobashi&amp;query_place_id=ChIJTSMuDqEJAWARncxJ8lDZ170" target="_blank" rel="noopener">📍 사시스</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Sushisakaba%20Sushitofuji%20Ebisu%20Square&amp;query_place_id=ChIJ-e8ct7cJAWAReEw6dMMbuPo" target="_blank" rel="noopener">📍 스시토후지 에비스스퀘어</a><a class="chip tel" href="tel:+81753543335">📞 075-354-3335</a></div></div></article><article class="item move"><div class="time">20:15</div><div class="body"><h3>호텔로 걷기</h3><div class="note">교토역 북쪽 → 호텔 직선 약 690m, 도보 12~15분 (추정)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Glad%20One%20Kyoto%20Shichijo&amp;query_place_id=ChIJU-9Of2YJAWARdwWMYD2OOfo" target="_blank" rel="noopener">📍 호텔</a></div></div></article></div></section><section class="day" id="day3"><div class="dayhead"><b>DAY 4 · 10/20 (화)</b><span>귀국</span></div><div class="timeline"><article class="item"><div class="time">오전</div><div class="body"><h3>체크아웃 + 오전 일정 (미정)<span class="tag">미정</span></h3><div class="note">오전에 뭐 할지는 차차 정하기 / 체크아웃 시간은 호텔에서 확인
+후보(쇼핑, 교토역 근처): 이온몰 교토 10:00 오픈(하치조 출구 도보 5분, 호텔에서 직선 약 1.45km)
+교토 아반티 10:00 오픈 / 요도바시 09:30 오픈 → 12:30 하루카 전 10:00~11:30에 이용 가능</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=AEON%20MALL%20KYOTO&amp;query_place_id=ChIJ8Uuuf6kIAWARFFrpsu-HJHQ" target="_blank" rel="noopener">📍 이온몰 교토</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Avanti&amp;query_place_id=ChIJS-XpmK0IAWARLYU5TZxCD3M" target="_blank" rel="noopener">📍 교토 아반티</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Yodobashi%20Camera%20Multimedia%20Kyoto&amp;query_place_id=ChIJNfpddK8IAWAR21KSO4M57nY" target="_blank" rel="noopener">📍 요도바시카메라</a></div></div></article><article class="item"><div class="time">12:00</div><div class="body"><h3>교토역 도착</h3><div class="note">하루카 12:30 전에 30분 여유 / 승강장과 9호차 위치 확인
+&#x27;사용개시&#x27;는 타기 직전에 누르기</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Station" target="_blank" rel="noopener">📍 교토역</a></div></div></article><article class="item"><div class="time">12:30</div><div class="body"><h3>교토역 → 간사이공항<br>(하루카 27호)</h3><div class="note">WEST QR 하루카 편도 / 12:30 → 13:50 (약 80분) / 9호차 1A·1B
+개찰구에서 QR 스캔</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20Station" target="_blank" rel="noopener">📍 교토역</a></div></div></article><article class="item"><div class="time">13:50</div><div class="body"><h3>간사이공항 도착</h3><div class="note">출발(16:05)까지 2시간 15분 / 체크인 → 출국심사 → 면세점</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kansai%20International%20Airport" target="_blank" rel="noopener">📍 간사이공항</a></div></div></article><article class="item"><div class="time">16:05</div><div class="body"><h3>간사이공항 → 인천공항</h3><div class="note">16:05 출발 / 18:10 인천 도착</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Kansai%20International%20Airport" target="_blank" rel="noopener">📍 간사이공항</a></div></div></article><article class="item"><div class="time">18:10</div><div class="body"><h3>인천공항 도착</h3><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Incheon%20International%20Airport" target="_blank" rel="noopener">📍 인천공항</a></div></div></article></div></section></main>
+  <footer>시간·거리는 추정이 섞여 있어요. 영업시간은 가기 전에 지도에서 한 번 더 확인해 주세요.</footer>
+</div>
+<script>
+(function(){
+  var KEY='kyoto-trip-tab';
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var days=[].slice.call(document.querySelectorAll('.day'));
+  function show(i){
+    tabs.forEach(function(t,k){ t.setAttribute('aria-selected', k===i ? 'true':'false'); });
+    days.forEach(function(d,k){ if(k===i){ d.classList.add('on'); } else { d.classList.remove('on'); } });
+    try{ localStorage.setItem(KEY, String(i)); }catch(e){}
+  }
+  tabs.forEach(function(t,k){
+    t.addEventListener('click', function(e){ e.preventDefault(); show(k); window.scrollTo(0,0); });
+  });
+  var start=0, now=new Date();
+  if(now.getFullYear()===2026 && now.getMonth()===9 && now.getDate()>=17 && now.getDate()<=20){ start=now.getDate()-17; }
+  else{ try{ var s=parseInt(localStorage.getItem(KEY),10); if(s>=0 && s<4) start=s; }catch(e){} }
+  show(start);
+  var top=document.getElementById('resv-top'), box=document.getElementById('ito');
+  if(top && box){
+    top.addEventListener('click', function(e){
+      e.preventDefault(); show(2); box.open=true;
+      try{ box.scrollIntoView({block:'center'}); }catch(err){ window.location.hash='ito'; }
+    });
+  }
+  var cb=document.getElementById('copyid');
+  if(cb){
+    cb.addEventListener('click', function(){
+      var txt=document.getElementById('rid').textContent;
+      function done(){ cb.textContent='복사됨'; setTimeout(function(){ cb.textContent='복사'; }, 1500); }
+      function fallback(){
+        var ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        try{ document.execCommand('copy'); done(); }catch(e){}
+        document.body.removeChild(ta);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, fallback); }
+      else{ fallback(); }
+    });
+  }
+  /* 모든 준비가 끝난 뒤에만 '한 날짜만 보기'를 켠다. 스크립트가 막힌 환경에서는 모든 날짜가 그대로 보인다. */
+  document.documentElement.className += ' js';
+})();
+</script>
+</body>
+</html>
